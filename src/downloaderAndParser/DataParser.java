@@ -4,6 +4,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import sample.GuiController;
 
 
 /**
@@ -12,24 +13,29 @@ import org.w3c.dom.NodeList;
 public class DataParser {
     private Document downloadedData;
     private NodeList nList;
+    private GuiController controller;
 
-    public DataParser(Document downloadedData) {
+    public DataParser(Document downloadedData, GuiController controller) {
         this.downloadedData = downloadedData;
+        this.controller = controller;
         this.nList = downloadedData.getElementsByTagName("pozycja");
+        this.controller.clearTextarea();
     }
 
 
-    public void parseData(Boolean isTabelaC) {
-        getTableName();
+    public String parseData(Boolean isTabelaC) {
+        String resultToReturn = getTableName();
         if (isTabelaC) {
-            getRatingDate();
+            resultToReturn += getRatingDate();
         }
-        getDate();
-        getTheValues(isTabelaC);
+        resultToReturn += getDate();
+        resultToReturn += getTheValues(isTabelaC);
+
+        return resultToReturn;
     }
 
     private String getHeader(String label, String elementToGet) {
-        String dataToReturn = null;
+        String dataToReturn = "";
         NodeList header = downloadedData.getElementsByTagName("tabela_kursow");
         for (int temp = 0; temp < header.getLength(); temp++) {
             Node node = header.item(temp);
@@ -37,13 +43,15 @@ public class DataParser {
                 Element eElement = (Element) node;
                 dataToReturn = eElement.getElementsByTagName(elementToGet).item(0).getTextContent();
                 System.out.println(label + " : " + dataToReturn);
+                controller.setResult(label + " : " + dataToReturn);
             }
         }
+
         return dataToReturn;
     }
 
     private String getTableName() {
-        return getHeader("Tabela :", "numer_tabeli");
+        return getHeader("Tabela", "numer_tabeli");
     }
 
     private String getDate() {
@@ -56,18 +64,20 @@ public class DataParser {
 
 
     private String getValue(String label, String elementToGet, int i) {
-        String dataToReturn = null;
+        String dataToReturn = "";
 
         Node nNode = nList.item(i);
         if (nNode.getNodeType() == Node.ELEMENT_NODE) {
             Element eElement = (Element) nNode;
             dataToReturn = eElement.getElementsByTagName(elementToGet).item(0).getTextContent();
             System.out.println(label + " : " + dataToReturn);
+            controller.setResult(label + " : " + dataToReturn);
         }
         return dataToReturn;
     }
 
     private String getCurrency(int i) {
+        controller.setResult("");
         return getValue("Waluta", "nazwa_waluty", i);
     }
 
@@ -91,18 +101,22 @@ public class DataParser {
         return getValue("Kurs sprzedaży", "kurs_sprzedazy", i);
     }
 
-    private void getTheValues(Boolean isTabelaC) {
+    private String getTheValues(Boolean isTabelaC) {
+        String resultToReturn = "";
         System.out.println();
+       // controller.setResult("\n");
         for (int i = 0; i < nList.getLength(); i++) {
-            getCurrency(i);
-            getConversion(i);
-            getCurrencyCode(i);
+            resultToReturn += getCurrency(i);
+            resultToReturn += getConversion(i);
+            resultToReturn += getCurrencyCode(i);
             if (isTabelaC) {
-                getPurchaseRate(i);
-                getSellRate(i);
+                resultToReturn += getPurchaseRate(i);
+                resultToReturn += getSellRate(i);
             } else
-                getAverageExchangeRate(i);
+                resultToReturn += getAverageExchangeRate(i);
             System.out.println();
         }
+
+        return resultToReturn;
     }
 }
