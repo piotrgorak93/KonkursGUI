@@ -73,7 +73,9 @@ public class DataParser {
             System.out.println(label + " : " + dataToReturn);
             controller.setResult(label + " : " + dataToReturn);
         }
-        return dataToReturn;
+
+            return dataToReturn;
+
     }
 
     private String getCurrency(int i) {
@@ -104,7 +106,6 @@ public class DataParser {
     private String getTheValues(Boolean isTabelaC) {
         String resultToReturn = "";
         System.out.println();
-       // controller.setResult("\n");
         for (int i = 0; i < nList.getLength(); i++) {
             resultToReturn += getCurrency(i);
             resultToReturn += getConversion(i);
@@ -118,5 +119,17 @@ public class DataParser {
         }
 
         return resultToReturn;
+    }
+
+    public void getCurrencies() {
+        int i = 0;
+        try {
+            while (getCurrency(i) != null) {
+                i++;
+            }
+        } catch (Exception e) {
+            System.out.println("Koniec listy");
+        }
+
     }
 }
