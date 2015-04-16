@@ -47,6 +47,10 @@ class DataDownloader {
         } catch (SAXException e) {
             e.printStackTrace();
         } catch (UnknownHostException e) {
+            /**
+             * Jeśli komputer nie jest podłączony do Internetu, to zostanie wyświetlony Alert z odpowiednią informacją.
+             * Po jego zamknięciu program zostanie zamknięty.
+             */
             System.err.println("Brak polaczenia");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
