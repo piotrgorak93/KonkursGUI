@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -31,9 +30,7 @@
 
                     </FXCollections>
                 </items>
-
             </ComboBox>
-
             <Text fx:id="actiontarget" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
             <AnchorPane id="Content" layoutX="200.0" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0"
                         prefWidth="428.0">
@@ -47,5 +44,4 @@
             </AnchorPane>
         </children>
     </AnchorPane>
-
 </VBox>
