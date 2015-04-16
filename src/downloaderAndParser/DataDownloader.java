@@ -14,10 +14,10 @@ import java.net.UnknownHostException;
 /**
  * @author Piotr Górak dnia 2015-03-28.
  */
-public class DataDownloader {
-    URL url;
-    Document doc;
-    DocumentBuilder db;
+class DataDownloader {
+    private URL url;
+    private Document doc;
+    private DocumentBuilder db;
     public Document downloadData(String urlToParse) {
 
 

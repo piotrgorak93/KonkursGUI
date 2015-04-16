@@ -1,60 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <?import javafx.scene.text.Text?>
+<?import java.lang.String?>
+<VBox prefHeight="466.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sample.GuiController">
+    <AnchorPane prefHeight="358.0" prefWidth="242.0">
+        <children>
+            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;"
+                   text="Wybierz tabelę" textAlignment="CENTER" wrapText="false">
+                <font>
+                    <Font size="18.0" fx:id="x1"/>
+                </font>
+                <textFill>
+                    <Color blue="0.624" green="0.624" red="0.624" fx:id="x2"/>
+                </textFill>
+            </Label>
+            <ComboBox fx:id="combo" layoutX="14.0" layoutY="89.0" prefWidth="150.0" promptText="Wybierz z listy">
+                <items>
+                    <FXCollections fx:id="list" fx:factory="observableArrayList">
+                        <String fx:id="tabelaA" fx:value="Tabela A"/>
+                        <String fx:id="tabelaB" fx:value="Tabela B"/>
+                        <String fx:id="tabelaC" fx:value="Tabela C"/>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GuiController">
-    <children>
-        <SplitPane dividerPositions="0.2505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-            <items>
-                <AnchorPane>
-                    <children>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Master" textAlignment="CENTER" wrapText="false">
-                            <font>
-                                <Font size="18.0" fx:id="x1" />
-                            </font>
-                            <textFill>
-                                <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
-                            </textFill>
-                        </Label>
-                        <ComboBox fx:id="combo" layoutX="36.0" layoutY="140.0" prefWidth="150.0" promptText="Wybierz opcję">
-                            <items>
-                                <FXCollections fx:id="list" fx:factory="observableArrayList">
-                                    <String fx:id="tabelaA" fx:value="Tabela A" />
-                                    <String fx:id="tabelaB" fx:value="Tabela B" />
-                                    <String fx:id="tabelaC" fx:value="Tabela C" />
+                    </FXCollections>
+                </items>
 
-                                </FXCollections>
-                            </items>
+            </ComboBox>
 
-                        </ComboBox>
+            <Text fx:id="actiontarget" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+            <AnchorPane id="Content" layoutX="200.0" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0"
+                        prefWidth="428.0">
+                <children>
+                    <Label alignment="CENTER" font="$x1" layoutX="24.0" layoutY="14.0" style="&#10;" text="Wynik"
+                           textAlignment="CENTER" textFill="$x2" wrapText="false"/>
+                    <TextArea fx:id="textarea" editable="false" layoutX="14.0" layoutY="89.0" prefHeight="321.0"
+                              prefWidth="259.0" scrollTop="50.0" AnchorPane.bottomAnchor="135.0"
+                              AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="146.0" AnchorPane.topAnchor="89.0"/>
+                </children>
+            </AnchorPane>
+        </children>
+    </AnchorPane>
 
-                        <Text fx:id="actiontarget" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                    </children>
-                </AnchorPane>
-                <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
-                    <content>
-                        <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="428.0">
-                            <children>
-                                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                                <TextArea fx:id="textarea" layoutX="80.0" layoutY="19.0" prefHeight="545.0" prefWidth="428.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </ScrollPane>
-            </items>
-        </SplitPane>
-
-    </children>
 </VBox>

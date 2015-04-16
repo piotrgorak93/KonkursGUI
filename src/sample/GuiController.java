@@ -1,9 +1,9 @@
 package sample;
 
+import downloaderAndParser.DataParser;
+import downloaderAndParser.ParseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import downloaderAndParser.*;
-import org.w3c.dom.Document;
 
 public class GuiController {
 
@@ -14,15 +14,15 @@ public class GuiController {
 
     @FXML
     private void initialize() {
-
+        ParseController controller = new ParseController();
+        controller.downloadData();
         combo.setOnAction((event) -> {
             String tableName = combo.getSelectionModel().getSelectedItem();
             System.out.println(tableName);
             if (tableName.equals("Tabela C"))
                 isTabelaC = true;
-            new DataParser(new Controller().getTableMap().get(tableName), this).parseData(isTabelaC);
+            new DataParser(controller.getTableMap().get(tableName), this).parseData(isTabelaC);
             isTabelaC = false;
-
         });
 
     }

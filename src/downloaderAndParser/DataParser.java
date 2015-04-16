@@ -11,9 +11,9 @@ import sample.GuiController;
  * @author Piotr Górak dnia 2015-03-28.
  */
 public class DataParser {
-    private Document downloadedData;
-    private NodeList nList;
-    private GuiController controller;
+    private final Document downloadedData;
+    private final NodeList nList;
+    private final GuiController controller;
 
     public DataParser(Document downloadedData, GuiController controller) {
         this.downloadedData = downloadedData;
@@ -30,7 +30,6 @@ public class DataParser {
         }
         resultToReturn += getDate();
         resultToReturn += getTheValues(isTabelaC);
-
         return resultToReturn;
     }
 
@@ -46,7 +45,6 @@ public class DataParser {
                 controller.setResult(label + " : " + dataToReturn);
             }
         }
-
         return dataToReturn;
     }
 
@@ -104,7 +102,6 @@ public class DataParser {
     private String getTheValues(Boolean isTabelaC) {
         String resultToReturn = "";
         System.out.println();
-       // controller.setResult("\n");
         for (int i = 0; i < nList.getLength(); i++) {
             resultToReturn += getCurrency(i);
             resultToReturn += getConversion(i);
