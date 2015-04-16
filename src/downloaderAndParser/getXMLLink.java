@@ -13,7 +13,7 @@ import java.io.IOException;
  *
  * @author Piotr Górak dnia 2015-04-10.
  */
-public class getXMLLink {
+class getXMLLink {
     /**
      * Funkcja pobieraj¹ca link do pliku XML
      *
