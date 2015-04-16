@@ -13,9 +13,9 @@ public class Controller {
     private HashMap<String, Document> tableMap = new HashMap<>();
 
     public Controller() {
-        Document tabelaA = new DataDownloader().downloadData(new getXMLLink().getLinkToFile("http://www.nbp.pl/home.aspx?f=/kursy/kursya.html"));
-        Document tabelaB = new DataDownloader().downloadData(new getXMLLink().getLinkToFile("http://www.nbp.pl/home.aspx?f=/kursy/kursyb.html"));
-        Document tabelaC = new DataDownloader().downloadData(new getXMLLink().getLinkToFile("http://www.nbp.pl/home.aspx?f=/kursy/kursyc.html"));
+        Document tabelaA = new DataDownloader().downloadData("http://www.nbp.pl/kursy/xml/a060z150327.xml");
+        Document tabelaB = new DataDownloader().downloadData("http://www.nbp.pl/kursy/xml/b012z150325.xml");
+        Document tabelaC = new DataDownloader().downloadData("http://www.nbp.pl/kursy/xml/c060z150327.xml");
         this.tableMap.put("Tabela A", tabelaA);
         this.tableMap.put("Tabela B", tabelaB);
         this.tableMap.put("Tabela C", tabelaC);

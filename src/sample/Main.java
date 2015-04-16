@@ -1,6 +1,5 @@
 package sample;
 
-import downloaderAndParser.getXMLLink;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +16,7 @@ public class Main extends Application {
         stage.setTitle("Waluty");
         stage.setScene(scene);
         stage.show();
+        stage.setMaximized(true);
 
 
     }
