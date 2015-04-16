@@ -54,7 +54,7 @@ class DataDownloader {
             System.err.println("Brak polaczenia");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image("sample/icon.png"));
+            stage.getIcons().add(new Image("bin/icon.png"));
             alert.setTitle("Błąd");
             alert.setContentText("Problem z połączeniem sieciowym!");
             alert.showAndWait();
