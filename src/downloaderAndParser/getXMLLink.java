@@ -1,9 +1,6 @@
 package downloaderAndParser;
 
 import bin.AlertWindow;
-import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

@@ -1,5 +1,6 @@
 package downloaderAndParser;
 
+import bin.AlertWindow;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -14,7 +15,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.UnknownHostException;
 
-/** Główny kontroler odpowiedzialny za pobranie oraz przeparsowanie danych
+/**
+ * Główny kontroler odpowiedzialny za pobranie oraz przeparsowanie danych
+ *
  * @author Piotr Górak dnia 2015-03-28.
  */
 class DataDownloader {
@@ -24,6 +27,7 @@ class DataDownloader {
 
     /**
      * Funkcja łaczy się z adresem URL podanym w parametrze oraz pobiera z niego plik XML poprzez wywołanie funkcji retrieveDocument()
+     *
      * @param urlToParse przyjmuje adres URL w postaci Stringa
      * @return zwraca Document
      */
@@ -39,6 +43,7 @@ class DataDownloader {
 
     /**
      * Funkcja pobiera dane znajdujące się pod linkiem
+     *
      * @return Zwraca Document
      */
     private Document retrieveDocument() {
@@ -52,14 +57,9 @@ class DataDownloader {
              * Po jego zamknięciu program zostanie zamknięty.
              */
             System.err.println("Brak polaczenia");
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image("bin/icon.png"));
-            alert.setTitle("Błąd");
-            alert.setContentText("Problem z połączeniem sieciowym!");
-            alert.showAndWait();
+            new AlertWindow().initialize();
             System.exit(0);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             System.exit(0);
         }
@@ -68,6 +68,7 @@ class DataDownloader {
 
     /**
      * Funkcja tworzy Document za pomocą DocumentBuilder
+     *
      * @param dbf DocumentBuilderFactory
      * @return Zwraca obiekt DocumentBuilder
      */
@@ -82,6 +83,7 @@ class DataDownloader {
 
     /**
      * Funkcja parsuje String do URL
+     *
      * @param urlToParse Adres URL w postaci String, który zostaje przeparsowany do URL
      * @return url Adres URL pliku docelowego
      */
