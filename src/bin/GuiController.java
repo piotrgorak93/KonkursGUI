@@ -25,6 +25,7 @@ public class GuiController {
      */
     @FXML
     private void initialize() {
+
         Controller controller = new Controller();
         controller.downloadData();
         combo.setOnAction((event) -> {

@@ -1,5 +1,9 @@
 package downloaderAndParser;
 
+import bin.AlertWindow;
+import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -26,7 +30,9 @@ class getXMLLink {
         try {
             doc = Jsoup.connect(url).get();
         } catch (IOException e) {
-            e.printStackTrace();
+            new AlertWindow().initialize();
+            System.err.println("Brak polaczenia");
+            System.exit(0);
         }
         Elements links = doc.select("a[href]:contains(xml)");
 
